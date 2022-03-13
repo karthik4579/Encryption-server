@@ -23,7 +23,7 @@ def ncrypt(*args):
             a = newtemp[0]
             b = newtemp[1]
             """
-            return newtemp
+            return tuple(newtemp)
 
     else:
         temp3 = fernet.encrypt(temp[0].encode())
