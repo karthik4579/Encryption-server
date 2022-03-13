@@ -1,6 +1,6 @@
 from flask import Flask
 from flask import request
-import encrypt
+from encrypt import ncrypt, dcrypt
 app = Flask(__name__)
 
 
@@ -10,30 +10,24 @@ def Encrypt():
     if(value0 == "register"):
         valuer1 = str(request.form['password'])
         valuer2 = str(request.form['nfcpassword'])
-        encrypt.ncrypt(valuer1, valuer2)
+        a = ncrypt(valuer1, valuer2)
+        return a
+
     elif(value0 == "nfcreset"):
         valuen1 = str(request.form['newnfcpassword'])
-        encrypt.ncrypt(valuen1)
+        b = ncrypt(valuen1)
+        return b
+
     elif(value0 == "userpassreset"):
         valueu1 = str(request.form['newuserpassword'])
-        encrypt.ncrypt(valueu1)
-        
+        c = ncrypt(valueu1)
+        return c
+
 
 
 @app.route('/dcrypt', methods=["POST"])
-def Decrypt():
-    value0 = str(request.form['device'])
-    if(value0 == "app"):     #This is for login so this will take password decrypt it and return it
+#This is for login so this will take password decrypt it and return it
+def Decrypt(): 
         valuel1 = str(request.form['password'])
-        encrypt.dcrypt(valuel1)
-        
-    elif (value0 == "raspberrypi"):
-        valuel1 = str(request.form['NFCpassword'])
-        encrypt.dcrypt(valuel1)
-        
-
-if __name__ == '__main__':
-    app.run(debug=True)
-    
-    
-    
+        d = dcrypt(valuel1)
+        return d
