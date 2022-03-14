@@ -7,7 +7,17 @@ app = Flask(__name__)
 @app.route('/encrypt', methods=["POST"])
 def Encrypt():
     value0 = str(request.form['activity'])
+    value1 = str(request.form['task'])
     if(value0 == "register"):
+        if(value1 == "password"):
+            valuer1 = str(request.form['password'])
+            a = ncrypt(valuer1)
+            return a
+        elif(value1 == "nfcpassword"):
+            valuer2 = str(request.form['nfcpassword'])
+            b = ncrypt(valuer2)
+            return b
+        
         valuer1 = str(request.form['password'])
         valuer2 = str(request.form['nfcpassword'])
         a = ncrypt(valuer1, valuer2)
