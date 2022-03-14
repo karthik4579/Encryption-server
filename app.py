@@ -13,16 +13,12 @@ def Encrypt():
             valuer1 = str(request.form['password'])
             a = ncrypt(valuer1)
             return a
+        
         elif(value1 == "nfcpassword"):
             valuer2 = str(request.form['nfcpassword'])
             b = ncrypt(valuer2)
-            return b
+            return e
         
-        valuer1 = str(request.form['password'])
-        valuer2 = str(request.form['nfcpassword'])
-        a = ncrypt(valuer1, valuer2)
-        return a
-
     elif(value0 == "nfcreset"):
         valuen1 = str(request.form['newnfcpassword'])
         b = ncrypt(valuen1)
