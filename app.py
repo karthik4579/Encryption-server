@@ -13,18 +13,30 @@ def Encrypt():
         valuer2 = str(request.form['nfcpassword'])
         a = str(ncrypt(valuer1))
         e = str(ncrypt(valuer2))
-        f = f"{a}, {e}"
-        return f
+        data = {
+            "password" : f"{a}",
+            "nfcpassword" : f"{e}",
+            }
+
+        return jsonify(data)
         
     elif(value0 == "nfcreset"):
         valuen1 = str(request.form['newnfcpassword'])
         b = str(ncrypt(valuen1))
-        return b
+        data1 = {
+            "newnfcpassword" : f"{b}",
+            }
+
+        return jsonify(data1)
 
     elif(value0 == "userpassreset"):
         valueu1 = str(request.form['newuserpassword'])
         c = str(ncrypt(valueu1))
-        return c
+        data2 = {
+            "newuserpassword" : f"{c}",
+            }
+
+        return jsonify(data2)
 
 
 
@@ -33,4 +45,8 @@ def Encrypt():
 def Decrypt(): 
         valuel1 = str(request.form['password'])
         d = str(dcrypt(valuel1))
-        return d
+        data3 = {
+            "password" : f"{d}",
+            }
+
+        return jsonify(data3)
