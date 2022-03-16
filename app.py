@@ -11,19 +11,19 @@ def Encrypt():
     if(value0 == "register"):
         valuer1 = str(request.form['password'])
         valuer2 = str(request.form['nfcpassword'])
-        a = ncrypt(valuer1)
-        e = ncrypt(valuer2)
+        a = str(ncrypt(valuer1))
+        e = str(ncrypt(valuer2))
         f = f"{a}, {e}"
         return f
         
     elif(value0 == "nfcreset"):
         valuen1 = str(request.form['newnfcpassword'])
-        b = ncrypt(valuen1)
+        b = str(ncrypt(valuen1))
         return b
 
     elif(value0 == "userpassreset"):
         valueu1 = str(request.form['newuserpassword'])
-        c = ncrypt(valueu1)
+        c = str(ncrypt(valueu1))
         return c
 
 
@@ -32,5 +32,5 @@ def Encrypt():
 #This is for login so this will take password decrypt it and return it
 def Decrypt(): 
         valuel1 = str(request.form['password'])
-        d = dcrypt(valuel1)
+        d = str(dcrypt(valuel1))
         return d
