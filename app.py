@@ -10,8 +10,8 @@ def Encrypt():
     if(value0 == "register"):
         valuer1 = str(request.form['password'])
         valuer2 = str(request.form['nfcpassword'])
-        a = str(ncrypt(valuer1))
-        e = str(ncrypt(valuer2))
+        a = ncrypt(valuer1)
+        e = ncrypt(valuer2)
         data = {
             "password" : f"{a}",
             "nfcpassword" : f"{e}",
@@ -22,7 +22,7 @@ def Encrypt():
         
     elif(value0 == "nfcreset"):
         valuen1 = str(request.form['newnfcpassword'])
-        b = str(ncrypt(valuen1))
+        b = ncrypt(valuen1)
         data1 = {
             "newnfcpassword" : f"{b}",
             "key" : f"{key}",
@@ -32,7 +32,7 @@ def Encrypt():
 
     elif(value0 == "userpassreset"):
         valueu1 = str(request.form['newuserpassword'])
-        c = str(ncrypt(valueu1))
+        c = ncrypt(valueu1)
         data2 = {
             "newuserpassword" : f"{c}",
             "key" : f"{key}",
@@ -47,6 +47,7 @@ def Encrypt():
 def Decrypt(): 
         valuel1 = str(request.form['password'])
         key = str(request.form['enckey'])
+        key_bytes = bytes(key, 'ascii')
         c = bytes(valuel1, 'ascii')
         d = dcrypt(c, key)
         data3 = {
